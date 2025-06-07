@@ -116,11 +116,11 @@ console.log("Sum of 1 to 10 is", sum(10));
 `,
 
   typescript: `function greet(name: string): void {
-  console.log(\`Hello, \${name}!\`);
+  console.log("Hello, " + name + "!");
 }
 
 function sum(n: number): number {
-  return [...Array(n).keys()].map(i => i + 1).reduce((a, b) => a + b, 0);
+  return Array.from({ length: n }, (_, i) => i + 1).reduce((a, b) => a + b, 0);
 }
 
 greet("Ronak Maheshwari");
