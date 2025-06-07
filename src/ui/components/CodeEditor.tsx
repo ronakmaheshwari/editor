@@ -10,16 +10,16 @@ export default function CodeEditor({
   language: string;
 }) {
   return (
-    <div className="w-full h-screen rounded-xl overflow-hidden">
+    <div className="w-full h-screen rounded-xl">
       <Editor
-        width="70%"
+        width="100 vw"
         height="100vh"
         language={language}
         value={code}
-        defaultValue="// some comment"
+        defaultValue={code}
         theme="shades-of-purple"
         onChange={onChange}
-        onMount={(_, monaco) => {
+        onMount={(editor, monaco) => {
           monaco.editor.defineTheme("shades-of-purple", {
             base: "vs-dark",
             inherit: true,
@@ -46,15 +46,16 @@ export default function CodeEditor({
           });
 
           monaco.editor.setTheme("shades-of-purple");
+          editor.focus();
         }}
         options={{
           fontSize: 18,
-          minimap: { enabled: false },
+          minimap: { enabled: true },
           wordWrap: "on",
-          scrollBeyondLastLine: false,
+          scrollBeyondLastLine: true,
           automaticLayout: true,
           scrollbar: {
-            vertical: "hidden",
+            vertical: "visible",
             horizontal: "hidden",
             handleMouseWheel: true,
           },
