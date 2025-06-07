@@ -5,17 +5,21 @@ import Code_Snippet from "../../utils";
 import OutputBox from "../components/Output";
 
 export default function Code() {
-  const editorRef = useRef(null);
+  const editorRef = useRef<{ getValue: () => string }>(null);
   const [value, setValue] = useState("");
   const [language, setLanguage] = useState("javascript");
+  const [langId, setlangId] = useState<number | undefined>();
 
   function handleLanguageSelect(lang: { name: string; id: number; version: string }) {
     const langKey = lang.name.toLowerCase();
+    const langId = lang.id;
+    setlangId(langId);
     setLanguage(langKey);
     setValue(Code_Snippet[langKey] ?? "");
   }
 
   useEffect(() => {
+    console.log(langId);
     console.log("Selected language:", language);
   }, [language]);
 
@@ -28,6 +32,7 @@ export default function Code() {
         </div>
 
         <CodeEditor
+          ref={editorRef}
           code={value}
           language={language}
           onChange={(val) => setValue(val ?? "")}
@@ -35,7 +40,7 @@ export default function Code() {
       </div>
 
       <div className="w-[30%] rounded-md shadow-sm p-4 overflow-y-auto">
-        <OutputBox />
+        <OutputBox editorRef={editorRef} language={language} id={langId}/>
       </div>
     </div>
   );

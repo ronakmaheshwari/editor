@@ -1,25 +1,36 @@
+import { forwardRef, useImperativeHandle, useRef } from "react";
 import { Editor } from "@monaco-editor/react";
 
-export default function CodeEditor({
-  code,
-  onChange,
-  language,
-}: {
-  code: string;
-  onChange: (value: string | undefined) => void;
-  language: string;
-}) {
+const CodeEditor = forwardRef(function CodeEditor(
+  {
+    code,
+    onChange,
+    language,
+  }: {
+    code: string;
+    onChange: (value: string | undefined) => void;
+    language: string;
+  },
+  ref: React.Ref<{ getValue: () => string }>
+) {
+  const editorRef = useRef<any>(null);
+
+  useImperativeHandle(ref, () => ({
+    getValue: () => editorRef.current?.getValue() ?? "",
+  }));
+
   return (
     <div className="w-full h-screen rounded-xl">
       <Editor
-        width="100 vw"
+        width="100%"
         height="100vh"
         language={language}
         value={code}
-        defaultValue={code}
         theme="shades-of-purple"
         onChange={onChange}
         onMount={(editor, monaco) => {
+          editorRef.current = editor;
+
           monaco.editor.defineTheme("shades-of-purple", {
             base: "vs-dark",
             inherit: true,
@@ -54,13 +65,10 @@ export default function CodeEditor({
           wordWrap: "on",
           scrollBeyondLastLine: true,
           automaticLayout: true,
-          scrollbar: {
-            vertical: "visible",
-            horizontal: "hidden",
-            handleMouseWheel: true,
-          },
         }}
       />
     </div>
   );
-}
+});
+
+export default CodeEditor;

@@ -1,3 +1,8 @@
+// Utility functions and constants for the editor
+
+export const key = import.meta.env.VITE_API_KEY;
+export const URL = import.meta.env.VITE_API_URL;
+
 export const Language = {
   C: { id: 50, version: "GCC 11.2.0" },
   CPP: { id: 54, version: "GCC 11.2.0" },
