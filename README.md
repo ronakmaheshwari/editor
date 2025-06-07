@@ -1,54 +1,137 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# 💻 10xdevs Editor
 
-Currently, two official plugins are available:
+A blazing-fast, multi-language online code editor built for modern developers. Powered by Monaco, themed with **"Shades of Purple"**, and integrated with Judge0 API for real-time code execution — it’s your go-to playground for writing, running, and testing code on the web. 🚀
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+## 🚀 Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- ✍️ **Monaco Editor** – Rich code editing with IntelliSense and syntax highlighting.  
+- 🌐 **Multi-language Support** – Run code in multiple programming languages.  
+- ⚙️ **Judge0 API Integration** – Seamless code compilation and execution.  
+- 🎨 **Custom Themes** – Stylish UI with the "Shades of Purple" theme.  
+- 📱 **Responsive Design** – Optimized for both desktop and mobile screens.  
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend:** React, Vite  
+- **Editor:** Monaco Editor  
+- **Styling:** Tailwind CSS  
+- **Code Execution:** Judge0 API  
+- **Deployment:** Vercel  
+
+---
+
+## 🧪 Getting Started
+
+### 📋 Prerequisites
+
+- Node.js (v14+)  
+- npm or yarn  
+
+### 🔧 Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/yourusername/10xdevs-code-editor.git
+cd 10xdevs-code-editor
+````
+
+Install dependencies:
+
+```bash
+npm install
+# or
+yarn install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Set up environment variables:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Create a `.env` file in the root directory and add your Judge0 API credentials:
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```env
+VITE_API_KEY=your_judge0_api_key
+VITE_API_URL=https://judge0-ce.p.rapidapi.com/submissions
 ```
+
+🔐 Ensure your API key is valid and has the required permissions.
+
+Start the development server:
+
+```bash
+npm run dev
+# or
+yarn dev
+```
+
+Visit [http://localhost:5173](http://localhost:5173) to access the app.
+
+---
+
+## 🧩 Project Structure
+
+```
+├── public/
+├── src/
+│   ├── components/
+│   │   ├── CodeEditor.tsx
+│   │   ├── Dropdown.tsx
+│   │   └── OutputBox.tsx
+│   ├── pages/
+│   │   └── Code.tsx
+│   ├── utils/
+│   │   └── index.ts
+│   └── main.tsx
+├── .env
+├── index.html
+├── package.json
+├── tailwind.config.js
+└── vite.config.ts
+```
+
+---
+
+## 🌐 Environment Variables
+
+In Vite, environment variables must be prefixed with `VITE_`:
+
+* `VITE_API_KEY` – Your Judge0 API key.
+* `VITE_API_URL` – The Judge0 submission endpoint.
+
+Access them like this:
+
+```ts
+const apiKey = import.meta.env.VITE_API_KEY;
+const apiUrl = import.meta.env.VITE_API_URL;
+```
+
+---
+
+## 📦 Deployment
+
+Deployed via Vercel. To deploy your own version:
+
+1. Push your code to GitHub.
+2. Import the repository into Vercel.
+3. Set your environment variables in the Vercel dashboard.
+4. Deploy your app 🚀
+
+---
+
+## 📄 License
+
+Licensed under the MIT License.
+
+---
+
+## 🙌 Acknowledgements
+
+* Monaco Editor
+* Judge0 API
+* Tailwind CSS
+* Vite
+* React
+
