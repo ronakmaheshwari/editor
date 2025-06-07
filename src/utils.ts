@@ -1,11 +1,10 @@
-// Utility functions and constants for the editor
-
 export const key = import.meta.env.VITE_API_KEY;
 export const URL = import.meta.env.VITE_API_URL;
 
 export const Language = {
   C: { id: 50, version: "GCC 11.2.0" },
   CPP: { id: 54, version: "GCC 11.2.0" },
+  Rust: { id: 73, version: "Rust 1.40.0" },
   Python3: { id: 71, version: "Python 3.10.4" },
   Java: { id: 62, version: "OpenJDK 17" },
   JavaScript: { id: 63, version: "Node.js 16.13.0" },
@@ -19,44 +18,187 @@ export const Language = {
 
 export const Code_Snippet: Record<string, string> = {
   c: `#include <stdio.h>
+
+void greet(const char* name) {
+    printf("Hello, %s!\\n", name);
+}
+
+int sum(int n) {
+    int total = 0;
+    for (int i = 1; i <= n; ++i) {
+        total += i;
+    }
+    return total;
+}
+
 int main() {
-    printf("Hello, World!\\n");
+    greet("Ronak Maheshwari");
+    int total = sum(10);
+    printf("Sum of first 10 numbers: %d\\n", total);
     return 0;
 }
 `,
+
   cpp: `#include <iostream>
+using namespace std;
+
+void greet(string name) {
+    cout << "Hello, " << name << "!" << endl;
+}
+
+int sum(int n) {
+    int total = 0;
+    for (int i = 1; i <= n; ++i) total += i;
+    return total;
+}
+
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    greet("Ronak Maheshwari");
+    cout << "Sum of 1 to 10 is " << sum(10) << endl;
     return 0;
 }
 `,
-  python3: `print("Hello, World!")`,
+
+  rust: `fn greet(name: &str) {
+    println!("Hello, {}!", name);
+}
+
+fn sum(n: u32) -> u32 {
+    (1..=n).sum()
+}
+
+fn main() {
+    let name = "Ronak Maheshwari";
+    greet(name);
+    println!("Sum of numbers from 1 to 10: {}", sum(10));
+}
+`,
+
+  python3: `def greet(name):
+    print(f"Hello, {name}!")
+
+def sum_n(n):
+    return sum(range(1, n+1))
+
+if __name__ == "__main__":
+    greet("Ronak Maheshwari")
+    print("Sum of 1 to 10 is", sum_n(10))
+`,
+
   java: `public class Main {
+    public static void greet(String name) {
+        System.out.println("Hello, " + name + "!");
+    }
+
+    public static int sum(int n) {
+        int total = 0;
+        for (int i = 1; i <= n; i++) total += i;
+        return total;
+    }
+
     public static void main(String[] args) {
-        System.out.println("Hello, World!");
+        greet("Ronak Maheshwari");
+        System.out.println("Sum of 1 to 10 is " + sum(10));
     }
 }
 `,
-  javascript: `console.log("Hello, World!");`,
-  typescript: `console.log("Hello, World!");`,
-  ruby: `puts "Hello, World!"`,
+
+  javascript: `function greet(name) {
+    console.log(\`Hello, \${name}!\`);
+}
+
+function sum(n) {
+    return Array.from({ length: n }, (_, i) => i + 1).reduce((a, b) => a + b, 0);
+}
+
+greet("Ronak Maheshwari");
+console.log("Sum of 1 to 10 is", sum(10));
+`,
+
+  typescript: `function greet(name: string): void {
+  console.log(\`Hello, \${name}!\`);
+}
+
+function sum(n: number): number {
+  return [...Array(n).keys()].map(i => i + 1).reduce((a, b) => a + b, 0);
+}
+
+greet("Ronak Maheshwari");
+console.log("Sum of 1 to 10 is", sum(10));
+`,
+
+  ruby: `def greet(name)
+  puts "Hello, #{name}!"
+end
+
+def sum(n)
+  (1..n).sum
+end
+
+greet("Ronak Maheshwari")
+puts "Sum of 1 to 10 is #{sum(10)}"
+`,
+
   go: `package main
 import "fmt"
+
+func greet(name string) {
+    fmt.Printf("Hello, %s!\\n", name)
+}
+
+func sum(n int) int {
+    total := 0
+    for i := 1; i <= n; i++ {
+        total += i
+    }
+    return total
+}
+
 func main() {
-    fmt.Println("Hello, World!")
+    greet("Ronak Maheshwari")
+    fmt.Println("Sum of 1 to 10 is", sum(10))
 }
 `,
+
   php: `<?php
-echo "Hello, World!";
+function greet($name) {
+    echo "Hello, $name!\\n";
+}
+
+function sum($n) {
+    return array_sum(range(1, $n));
+}
+
+greet("Ronak Maheshwari");
+echo "Sum of 1 to 10 is " . sum(10);
 ?>
 `,
-  swift: `print("Hello, World!")`,
-  kotlin: `fun main() {
-    println("Hello, World!")
+
+  swift: `func greet(_ name: String) {
+    print("Hello, \\(name)!")
+}
+
+func sum(_ n: Int) -> Int {
+    return (1...n).reduce(0, +)
+}
+
+greet("Ronak Maheshwari")
+print("Sum of 1 to 10 is \\(sum(10))")
+`,
+
+  kotlin: `fun greet(name: String) {
+    println("Hello, \$name!")
+}
+
+fun sum(n: Int): Int {
+    return (1..n).sum()
+}
+
+fun main() {
+    greet("Ronak Maheshwari")
+    println("Sum of 1 to 10 is \${sum(10)}")
 }
 `,
 };
 
-
-
-export default Code_Snippet
+export default Code_Snippet;
