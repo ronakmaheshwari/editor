@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Language } from "../../utils";
+import { Language } from "../../utils/utils";
 
 type LanguageValue = { id: number; version: string };
 

@@ -1,5 +1,6 @@
 export const key = import.meta.env.VITE_API_KEY;
 export const URL = import.meta.env.VITE_API_URL;
+export const Api_Key = import.meta.env.VITE_OPENAI_API_KEY;
 
 export const Language = {
   C: { id: 50, version: "GCC 11.2.0" },

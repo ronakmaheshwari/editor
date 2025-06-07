@@ -1,5 +1,5 @@
 import axios from "axios";
-import { key, URL } from "../../utils";
+import { key, URL } from "../../utils/utils";
 import { useState } from "react";
 
 interface OutputBoxProps {

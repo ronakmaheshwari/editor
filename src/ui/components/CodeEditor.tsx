@@ -22,7 +22,7 @@ const CodeEditor = forwardRef(function CodeEditor(
   return (
     <div className="w-full h-screen rounded-xl">
       <Editor
-        width="100%"
+        width="100 vw"
         height="100vh"
         language={language}
         value={code}
