@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 export default function Navbar() {
   const navigate = useNavigate();
   return (
-    <div className="w-full h-16 bg-blue-800 p-4 px-8 flex items-center gap-6">
+    <div className="w-full h-16 bg-blue-700 p-4 px-8 flex items-center gap-6">
       <div className="flex items-center gap-3">
         <img
           src="/ronak.ico"
