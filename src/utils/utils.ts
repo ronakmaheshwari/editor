@@ -1,19 +1,27 @@
+import ts from "typescript";
+
 export const key = import.meta.env.VITE_API_KEY;
 export const URL = import.meta.env.VITE_API_URL;
+export const Piston = import.meta.env.VITE_PISTON_API;
 
-export const Language = {
-  C: { id: 50, version: "GCC 11.2.0" },
-  CPP: { id: 54, version: "GCC 11.2.0" },
-  Rust: { id: 73, version: "Rust 1.40.0" },
-  Python3: { id: 71, version: "Python 3.10.4" },
-  Java: { id: 62, version: "OpenJDK 17" },
-  JavaScript: { id: 63, version: "Node.js 16.13.0" },
-  TypeScript: { id: 74, version: "TypeScript 4.5.4" },
-  Ruby: { id: 72, version: "Ruby 3.0.2" },
-  Go: { id: 60, version: "Go 1.17" },
-  PHP: { id: 68, version: "PHP 8.0.13" },
-  Swift: { id: 83, version: "Swift 5.4" },
-  Kotlin: { id: 78, version: "Kotlin 1.5.31" },
+export interface LanguageInfo {
+  id: number;
+  version: string;
+}
+
+export const Language: Record<string, LanguageInfo> = {
+  c: { id: 50, version: "11.2.0" },
+  "C++": { id: 32, version: "10.2.0" },
+  rust: { id: 73, version: "1.71.1" },
+  python: { id: 71, version: "3.11.4" },
+  java: { id: 62, version: "17.0.8" },
+  javascript: { id: 63, version: "20.0.0" },
+  typescript: { id: 74, version: "5.0.2" },
+  ruby: { id: 72, version: "3.2.2" },
+  go: { id: 60, version: "1.20.3" },
+  php: { id: 68, version: "8.2.10" },
+  swift: { id: 83, version: "5.9.0" },
+  kotlin: { id: 78, version: "1.9.0" },
 };
 
 export const Code_Snippet: Record<string, string> = {
@@ -39,7 +47,7 @@ int main() {
 }
 `,
 
-  cpp: `#include <iostream>
+  "c++": `#include <iostream>
 using namespace std;
 
 void greet(string name) {
@@ -74,7 +82,7 @@ fn main() {
 }
 `,
 
-  python3: `def greet(name):
+  python: `def greet(name):
     print(f"Hello, {name}!")
 
 def sum_n(n):
@@ -115,11 +123,11 @@ greet("Ronak Maheshwari");
 console.log("Sum of 1 to 10 is", sum(10));
 `,
 
-  typescript: `function greet(name: string): void {
+  typescript: `function greet(name){
   console.log("Hello, " + name + "!");
 }
 
-function sum(n: number): number {
+function sum(n) {
   return Array.from({ length: n }, (_, i) => i + 1).reduce((a, b) => a + b, 0);
 }
 
@@ -200,5 +208,9 @@ fun main() {
 }
 `,
 };
+
+export function transpileTsToJs(tsCode: string): string {
+  return ts.transpile(tsCode, { module: ts.ModuleKind.CommonJS });
+}
 
 export default Code_Snippet;

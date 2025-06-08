@@ -1,6 +1,6 @@
 @import "tailwindcss";
 /* in index.css or globals.css */
-.scrollbar-always {
+/* .scrollbar-always {
   overflow-y: scroll;
   scrollbar-gutter: stable;
-}
+} */

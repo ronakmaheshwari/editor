@@ -4,45 +4,45 @@ import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
   const navigate = useNavigate();
+
   return (
-    <div className="w-full h-16 bg-blue-700 p-4 px-8 flex items-center gap-6">
+    <div className="w-full h-16 bg-zinc-50 text-black px-6 flex items-center justify-between border-b border-dashed border-neutral-400 shadow-sm">
       <div className="flex items-center gap-3">
         <img
           src="/ronak.ico"
           alt="Ronak Logo"
-          className="w-12 h-12 rounded-xl shadow-md"
+          className="w-10 h-10 rounded-xl shadow"
         />
-        <span className="text-white text-3xl font-bold tracking-wide">
-          Code Editor
+        <span className="font-mono text-xl font-extrabold text-blue-600 tracking-wide">
+          CodeX
         </span>
       </div>
 
-      <div className="flex items-center gap-4 ml-auto">
-        {/* <button onClick={()=>{navigate("/leetcode")}} className="flex items-center gap-2 bg-blue-50 text-blue-800 font-semibold px-4 py-2 rounded-lg hover:bg-blue-50 border border-zinc-400 transition">
-          <SiLeetcode className="text-lg" />
-          Leetcode
-        </button> */}
-        <button onClick={()=>{navigate("/")}} className="flex items-center gap-2  bg-blue-50 text-blue-800 font-semibold px-4 py-2 rounded-lg hover:bg-blue-100 transition">
+      <div className="flex items-center gap-4">
+        <button
+          onClick={() => navigate("/")}
+          className="flex items-center gap-2 bg-blue-50 text-blue-800 font-medium px-4 py-1.5 rounded-md hover:bg-blue-100 transition"
+        >
           <VscCode className="text-lg" />
           Editor
         </button>
+
         <a
           href="https://github.com/ronakmaheshwari"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 bg-blue-50 text-blue-800 font-semibold px-4 py-2 rounded-lg hover:bg-blue-100 transition"
+          className="text-blue-800 hover:text-black transition"
         >
-          <FaGithub className="text-lg" />
-          GitHub
+          <FaGithub className="text-xl" />
         </a>
+
         <a
           href="https://x.com/0xronakm"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 bg-blue-50 text-blue-800 font-semibold px-4 py-2 rounded-lg hover:bg-blue-100 transition"
+          className="text-blue-800 hover:text-black transition"
         >
-          <FaTwitter className="text-lg" />
-          Twitter
+          <FaTwitter className="text-xl" />
         </a>
       </div>
     </div>

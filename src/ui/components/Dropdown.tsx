@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Language } from "../../utils";
+import { Language } from "../../utils/utils";
 
 type LanguageValue = { id: number; version: string };
 
@@ -11,8 +11,7 @@ export default function Dropdown({
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState<string | null>(null);
 
-  const languages = Object.entries(Language); // [ [name, {id, version}], ... ]
-
+  const languages = Object.entries(Language); 
   function handleSelect(name: string, lang: LanguageValue) {
     setSelected(name);
     setOpen(false);
