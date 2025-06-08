@@ -31,6 +31,7 @@ export default function Code() {
     setlangId(lang.id);
     setLanguage(langKey);
     setValue(Code_Snippet[langKey] ?? "");
+    console.log(isRunning);
   }
 
   const resetEditor = async () => {
