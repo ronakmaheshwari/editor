@@ -11,7 +11,7 @@ export default function StopButton({ onClick }: ArrowButtonProps) {
   const handleClick = (e: React.SyntheticEvent) => {
     setIsSpinning(true);
     onClick(e);
-    setTimeout(() => setIsSpinning(false), 3000); 
+    setTimeout(() => setIsSpinning(false), 2000); 
   };
 
   return (

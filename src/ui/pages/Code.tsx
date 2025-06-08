@@ -2,12 +2,13 @@ import { useRef, useState, useEffect } from "react";
 import CodeEditor from "../components/CodeEditor";
 import Dropdown from "../components/Dropdown";
 import Code_Snippet from "../../utils/utils";
-import OutputBox from "../components/Output";
 import Navbar from "../components/Navbar";
 import ArrowButton from "../components/ExecuteButton";
 import StopButton from "../components/StopButton";
 import runcode from "../../utils/piston";
 import Themebutton from "../components/Thememod";
+import hljs from 'highlight.js';
+import Outputs from "../components/Terminal";
 
 interface OutputResponse {
   stdout?: string;
@@ -20,7 +21,7 @@ interface OutputResponse {
 export default function Code() {
   const editorRef = useRef<{ getValue: () => string }>(null);
   const [value, setValue] = useState("");
-  const [language, setLanguage] = useState("javascript");
+  const [language, setLanguage] = useState("");
   const [langId, setlangId] = useState<number | undefined>();
   const [output, setOutput] = useState<OutputResponse | null>(null);
   const [isRunning, setIsRunning] = useState(false);
@@ -42,15 +43,20 @@ export default function Code() {
 
   const handleCode = async () => {
     const sourceCode = editorRef.current?.getValue() || "";
-    if (!language || !sourceCode) {
-      alert("Missing language or code.");
-      return;
-    }
+    setOutput(null);
+    if (!language || !sourceCode.trim()) {
+        const { language: detectedLang} = hljs.highlightAuto(sourceCode);
+        if(!detectedLang){
+          alert("Please select a language before running the code.");
+          return;
+        }
+        setLanguage(detectedLang)
+      }
 
     setIsRunning(true);
     try {
       const response = await runcode({ language, code: sourceCode });
-      console.log("Raw output from Piston:", response?.output);
+      // console.log("Raw output from Piston:", response?.output);  
       setOutput(response?.output ?? { message: "No response from server." });
     } catch (error) {
       console.error("Execution error:", error);
@@ -106,9 +112,11 @@ export default function Code() {
           </div>
         </div>
 
-        <div className="w-[30%] h-[calc(100vh-80px)] overflow-y-auto rounded-md bg-white p-4 border border-dashed border-neutral-400 shadow-sm">
-          <OutputBox title="Output:" output={output} />
-        </div>
+        {/* <div className="w-[30%] h-[calc(100vh-100px)]">         */}
+          <div className="w-[30%] h-[calc(100vh-100px)] rounded-md bg-white p-4 border border-dashed border-neutral-400 shadow-sm">
+            <Outputs title="Output:" output={output} />
+          </div>
+         {/* </div>  */}
       </div>
     </div>
   );
