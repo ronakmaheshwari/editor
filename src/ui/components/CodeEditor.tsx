@@ -11,7 +11,7 @@ const CodeEditor = forwardRef(function CodeEditor(
     code: string;
     onChange: (value: string | undefined) => void;
     language: string;
-    theme: "shades-of-purple" | "night-owl" | "ronak-light";
+    theme: "shades-of-purple" | "night-owl" | "ronak-light" | "noctis-light";
   },
   ref: React.Ref<{ getValue: () => string }>
 ) {
@@ -71,6 +71,41 @@ const CodeEditor = forwardRef(function CodeEditor(
         "editor.inactiveSelectionBackground": "#e5f1fb",
       },
     });
+
+    monaco.editor.defineTheme("noctis-light", {
+        base: "vs",
+        inherit: true,
+        rules: [
+          { token: "", foreground: "1e1e1e" },
+          { token: "comment", foreground: "7c8590", fontStyle: "italic" },
+          { token: "keyword", foreground: "0066cc", fontStyle: "bold" },
+          { token: "number", foreground: "1c6b48" },
+          { token: "string", foreground: "0088aa" },
+          { token: "variable", foreground: "003366" },
+          { token: "type.identifier", foreground: "336699" },
+          { token: "function", foreground: "005f87" },
+          { token: "class", foreground: "0f4c81" },
+          { token: "constant", foreground: "b362ff" },
+          { token: "delimiter", foreground: "4d4d4d" },
+        ],
+        colors: {
+          "editor.background": "#f5fbff",
+          "editor.foreground": "#1e1e1e",
+          "editorCursor.foreground": "#2a2a2a",
+          "editor.lineHighlightBackground": "#e8f4ff",
+          "editorLineNumber.foreground": "#94a3b8",
+          "editor.selectionBackground": "#cce9ff",
+          "editor.inactiveSelectionBackground": "#ddeeff",
+          "editorIndentGuide.background": "#d4dce2",
+          "editorIndentGuide.activeBackground": "#a5b4fc",
+          "editorWidget.background": "#ffffff",
+          "editorWidget.border": "#d1d5db",
+          "editorSuggestWidget.background": "#ffffff",
+          "editorSuggestWidget.border": "#e5e7eb",
+          "editorSuggestWidget.selectedBackground": "#cce2ff",
+        },
+      });
+
 
     monaco.editor.defineTheme("night-owl", {
       base: "vs-dark",

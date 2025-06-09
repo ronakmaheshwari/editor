@@ -25,7 +25,7 @@ export default function Code() {
   const [langId, setlangId] = useState<number | undefined>();
   const [output, setOutput] = useState<OutputResponse | null>(null);
   const [isRunning, setIsRunning] = useState(false);
-  const [themeColor, setThemeColor] = useState<"shades-of-purple" | "night-owl">("shades-of-purple");
+  const [themeColor, setThemeColor] = useState<"shades-of-purple" | "noctis-light">("shades-of-purple");
 
   function handleLanguageSelect(lang: { name: string; id: number; version: string }) {
     const langKey = lang.name.toLowerCase();
@@ -68,7 +68,7 @@ export default function Code() {
 
   useEffect(() => {
     const stored = localStorage.getItem("theme");
-    if (stored === "shades-of-purple" || stored === "night-owl") {
+    if (stored === "shades-of-purple" || stored === "noctis-light") {
       setThemeColor(stored);
     }
   }, []);
@@ -89,11 +89,11 @@ export default function Code() {
         <div className="flex flex-col w-[70%] h-[calc(100vh-80px)]">
           <div className="mb-2 w-full flex items-center justify-between gap-4 p-3 border border-dashed border-neutral-400 shadow-sm bg-white rounded-md">
             <Dropdown onClick={handleLanguageSelect} />
-            <div className="flex justify-center gap-2 items-center">
+            <div className="flex justify-center gap-3 items-center">
               <Themebutton
-                isDark={themeColor === "night-owl"}
+                isDark={themeColor === "noctis-light"}
                 toggleTheme={() =>
-                  setThemeColor(prev => (prev === "night-owl" ? "shades-of-purple" : "night-owl"))
+                  setThemeColor(prev => (prev === "noctis-light" ? "shades-of-purple" : "noctis-light"))
                 }
               />
               <StopButton onClick={resetEditor} />

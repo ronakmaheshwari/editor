@@ -8,11 +8,13 @@ export default function Themebutton({
   toggleTheme: (checked: boolean) => void;
 }) {
   return (
-    <div className="relative inline-block" style={{ backgroundColor: isDark ? "#bfdbfe": "transparent", borderRadius: "9999px", padding: "2px" }}>
+    <button className="relative w-10 h-10 flex items-center justify-center rounded-md" style={{ backgroundColor: isDark ? "#000000": "#2563eb", padding: "2px" }}>
       <DarkModeSwitch
         checked={isDark}
         onChange={toggleTheme}
         size={20}
+        moonColor="white"
+        sunColor="yellow"
         style={{ marginBottom: 0 }}
       />
       <style>{`
@@ -23,6 +25,6 @@ export default function Themebutton({
           fill: ${isDark ? "white" : "yellow"};
         }
       `}</style>
-    </div>
+    </button>
   );
 }
