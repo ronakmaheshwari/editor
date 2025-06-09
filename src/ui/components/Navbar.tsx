@@ -2,11 +2,21 @@ import { FaGithub, FaTwitter } from "react-icons/fa";
 import { VscCode } from "react-icons/vsc";
 import { useNavigate } from "react-router-dom";
 
-export default function Navbar() {
+export default function Navbar({
+  themeColor,
+}: {
+  themeColor: "shades-of-purple" | "noctis-light";
+}) {
   const navigate = useNavigate();
 
   return (
-    <div className="w-full h-16 bg-zinc-50 text-black px-6 flex items-center justify-between border-b border-dashed border-neutral-400 shadow-sm">
+    <div
+      className={`w-full h-16 px-6 flex items-center justify-between border-b border-dashed shadow-sm ${
+        themeColor === "noctis-light"
+          ? "bg-[#f8fafc] text-white border-neutral-700"
+          : "bg-zinc-50 text-black border-neutral-400"
+      }`}
+    >
       <div className="flex items-center gap-3">
         <img
           src="/ronak.ico"

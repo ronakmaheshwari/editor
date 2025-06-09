@@ -1,5 +1,5 @@
-import Terminal, { ColorMode, TerminalOutput } from 'react-terminal-ui';
-import { useEffect, useState, useRef, type JSX } from 'react';
+import Terminal, { ColorMode, TerminalOutput } from "react-terminal-ui";
+import { useEffect, useState, useRef, type JSX } from "react";
 
 interface OutputResponse {
   stdout?: string;
@@ -12,9 +12,11 @@ interface OutputResponse {
 export default function Outputs({
   title,
   output,
+  themeColor,
 }: {
   title: string;
   output: OutputResponse | null;
+  themeColor?: "shades-of-purple" | "noctis-light";
 }) {
   const [terminalLines, setTerminalLines] = useState<JSX.Element[]>([]);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -103,8 +105,12 @@ export default function Outputs({
 
       <div
         ref={scrollRef}
-        className="flex-1 overflow-y-auto border border-gray-300 rounded shadow-inner bg-gray-800"
-      > 
+        className="flex-1 overflow-y-auto border rounded shadow-inner"
+        style={{
+          backgroundColor: themeColor === "noctis-light" ? "#1f2937" : "#1f2937",
+          borderColor: themeColor === "noctis-light" ? "#555" : undefined,
+        }}
+      >
         <Terminal
           height="100%"
           name="Output Terminal"
