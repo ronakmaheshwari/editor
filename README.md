@@ -1,25 +1,28 @@
 
 # 💻 10xdevs Editor
 
-A blazing-fast, multi-language online code editor built for modern developers. Powered by Monaco, themed with **"Shades of Purple"**, and integrated with Judge0 API for real-time code execution — it’s your go-to playground for writing, running, and testing code on the web. 🚀
+A blazing-fast, multi-language online code editor built for modern developers. Powered by Monaco, themed with **"Shades of Purple"** and **"Noctis"**, and integrated with Judge0 API and Piston API for real-time code execution — it’s your go-to playground for writing, running, and testing code on the web. 🚀
 
+---
 
-## 🚀 Features
+## ✨ Features
 
-- ✍️ **Monaco Editor** – Rich code editing with IntelliSense and syntax highlighting.  
-- 🌐 **Multi-language Support** – Run code in multiple programming languages.  
-- ⚙️ **Judge0 API Integration** – Seamless code compilation and execution.  
-- 🎨 **Custom Themes** – Stylish UI with the "Shades of Purple" theme.  
-- 📱 **Responsive Design** – Optimized for both desktop and mobile screens.  
+- 🧠 **User-defined interactive programs** with support for menu-driven input  
+- 🔍 **Automatic language detection** and smart execution  
+- 💻 **Multi-language support** — Python, C++, JavaScript, and more  
+- 🎨 **Multiple editor themes** — Light, Dark, Noctis, and others  
+- 🧠 **Intelligent Monaco-based editor** — Just like VS Code, right in the browser  
+- 📦 **Zero setup required** — 100% browser-based  
+- 🚀 **Fast and reliable code execution** with real-time output 
 
 ---
 
 ## 🛠️ Tech Stack
 
 - **Frontend:** React, Vite  
-- **Editor:** Monaco Editor  
+- **Editor:** Custom Editor  
 - **Styling:** Tailwind CSS  
-- **Code Execution:** Judge0 API  
+- **Code Execution:** Judge0 API , Piston API 
 - **Deployment:** Vercel  
 
 ---
