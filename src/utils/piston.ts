@@ -40,7 +40,7 @@ export default async function runcode({
     }
 
     const response = await axios.post(`${Piston}/execute`, {
-      language: language === "typescript" ? "javascript" : language, 
+      language,
       version,
       files: [{ name: "main", content: finalCode }],
       stdin: "",
