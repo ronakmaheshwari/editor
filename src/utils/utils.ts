@@ -127,7 +127,7 @@ console.log("Sum of 1 to 10 is", sum(10));
   console.log("Hello, " + name + "!");
 }
 
-function sum(n:number):void{
+function sum(n:number):number{
   return Array.from({ length: n }, (_, i) => i + 1).reduce((a, b) => a + b, 0);
 }
 
