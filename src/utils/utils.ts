@@ -123,11 +123,11 @@ greet("Ronak Maheshwari");
 console.log("Sum of 1 to 10 is", sum(10));
 `,
 
-  typescript: `function greet(name){
+  typescript: `function greet(name:string):void{
   console.log("Hello, " + name + "!");
 }
 
-function sum(n) {
+function sum(n:number):void{
   return Array.from({ length: n }, (_, i) => i + 1).reduce((a, b) => a + b, 0);
 }
 

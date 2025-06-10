@@ -1,6 +1,7 @@
 import { FaGithub, FaTwitter } from "react-icons/fa";
 import { VscCode } from "react-icons/vsc";
 import { useNavigate } from "react-router-dom";
+import Button from "./Button";
 
 export default function Navbar({
   themeColor,
@@ -29,14 +30,8 @@ export default function Navbar({
       </div>
 
       <div className="flex items-center gap-4">
-        <button
-          onClick={() => navigate("/")}
-          className="flex items-center gap-2 bg-blue-50 text-blue-800 font-medium px-4 py-1.5 rounded-md hover:bg-blue-100 transition"
-        >
-          <VscCode className="text-lg" />
-          Editor
-        </button>
-
+        <Button onClick={() => navigate("/")} title="Editor" icon={<VscCode className="text-lg"/>} />
+        
         <a
           href="https://github.com/ronakmaheshwari"
           target="_blank"

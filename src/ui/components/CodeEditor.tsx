@@ -1,5 +1,6 @@
 import { forwardRef, useImperativeHandle, useRef } from "react";
 import { Editor } from "@monaco-editor/react";
+import Loader from "./Spinner";
 
 const CodeEditor = forwardRef(function CodeEditor(
   {
@@ -158,7 +159,9 @@ const CodeEditor = forwardRef(function CodeEditor(
           wordWrap: "on",
           scrollBeyondLastLine: false,
           automaticLayout: true,
+          fontFamily: "'JetBrains Mono', 'Fira Code', 'Monaco', 'Menlo', 'Ubuntu Mono', monospace",
         }}
+        loading={<Loader />}
       />
     </div>
   );

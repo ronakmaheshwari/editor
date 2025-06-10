@@ -105,14 +105,14 @@ export default function Outputs({
 
       <div
         ref={scrollRef}
-        className="flex-1 overflow-y-auto border rounded shadow-inner"
+        className="h-full overflow-y-auto border rounded shadow-inner"
         style={{
           backgroundColor: themeColor === "noctis-light" ? "#1f2937" : "#1f2937",
           borderColor: themeColor === "noctis-light" ? "#555" : undefined,
         }}
       >
         <Terminal
-          height="100%"
+          // height="100"
           name="Output Terminal"
           colorMode={ColorMode.Dark}
           onInput={() => {}}
