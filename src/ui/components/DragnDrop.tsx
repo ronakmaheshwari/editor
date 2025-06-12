@@ -50,6 +50,7 @@ export default function MyDropzone({ className = "", onFileContent}: DropzonePro
     reader.readAsText(codeFile);
   }, []);
 
+
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
     accept: {
@@ -80,15 +81,17 @@ export default function MyDropzone({ className = "", onFileContent}: DropzonePro
         {isDragActive ? (
           <p>Drop the code file here ...</p>
         ) : (
-          <div>
-            
+          <div className="flex flex-col justify-center items-center">
             <p>Drag & drop a code file here, or click to select</p>
+            <em>(Only *.code will be accepted)</em>
           </div>
         )}
       </div>
 
       {file && (
-            <div className="w-[350px] bg-gray-100 p-3 rounded-md shadow-sm border border-gray-400 space-y-2">
+        <aside>
+          <h4 className="font-mono text-md ">Accepted files:</h4>
+            <div className="w-[365px] bg-gray-100 p-3 rounded-md shadow-sm border border-gray-300 space-y-2">
               <div className="flex items-center gap-2">
                 {getIconByExtension(fileExtension)}
                 <span className="text-sm font-medium text-gray-900 truncate">
@@ -96,6 +99,7 @@ export default function MyDropzone({ className = "", onFileContent}: DropzonePro
                 </span>
               </div>
             </div>  
+        </aside>
       )}
     </div>
   );
