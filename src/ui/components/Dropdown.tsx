@@ -11,7 +11,8 @@ export default function Dropdown({
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState<string | null>(null);
 
-  const languages = Object.entries(Language); 
+  const languages = Object.entries(Language);
+
   function handleSelect(name: string, lang: LanguageValue) {
     setSelected(name);
     setOpen(false);

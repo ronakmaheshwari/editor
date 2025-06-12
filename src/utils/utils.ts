@@ -10,18 +10,18 @@ export interface LanguageInfo {
 }
 
 export const Language: Record<string, LanguageInfo> = {
-  c: { id: 50, version: "11.2.0" },
-  "C++": { id: 32, version: "10.2.0" },
-  rust: { id: 73, version: "1.71.1" },
-  python: { id: 71, version: "3.11.4" },
-  java: { id: 62, version: "17.0.8" },
-  javascript: { id: 63, version: "20.0.0" },
-  typescript: { id: 74, version: "5.0.2" },
-  ruby: { id: 72, version: "3.2.2" },
-  go: { id: 60, version: "1.20.3" },
-  php: { id: 68, version: "8.2.10" },
-  swift: { id: 83, version: "5.9.0" },
-  kotlin: { id: 78, version: "1.9.0" },
+  C: { id: 50, version: "11.2.0" },
+  Cpp: { id: 32, version: "10.2.0" },
+  Rust: { id: 73, version: "1.71.1" },
+  Python: { id: 71, version: "3.11.4" },
+  Java: { id: 62, version: "17.0.8" },
+  Javascript: { id: 63, version: "20.0.0" },
+  Typescript: { id: 74, version: "5.0.2" },
+  Ruby: { id: 72, version: "3.2.2" },
+  Go: { id: 60, version: "1.20.3" },
+  Php: { id: 68, version: "8.2.10" },
+  Swift: { id: 83, version: "5.9.0" },
+  Kotlin: { id: 78, version: "1.9.0" },
 };
 
 export const Code_Snippet: Record<string, string> = {
@@ -47,7 +47,7 @@ int main() {
 }
 `,
 
-  "c++": `#include <iostream>
+  cpp: `#include <iostream>
 using namespace std;
 
 void greet(string name) {

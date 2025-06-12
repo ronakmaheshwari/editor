@@ -9,6 +9,9 @@ import runcode from "../../utils/piston";
 import Themebutton from "../components/Thememod";
 import hljs from "highlight.js";
 import Outputs from "../components/Terminal";
+import MyDropzone from "../components/DragnDrop";
+import Modal from "../components/Modal";
+import Button from "../components/Button";
 
 interface OutputResponse {
   stdout?: string;
@@ -25,6 +28,7 @@ export default function Code() {
   const [langId, setlangId] = useState<number | undefined>();
   const [output, setOutput] = useState<OutputResponse | null>(null);
   const [isRunning, setIsRunning] = useState(false);
+  const [isDragModalopen, setisDragModalopen] = useState(false);
   const [themeColor, setThemeColor] = useState<
     "shades-of-purple" | "noctis-light"
   >("shades-of-purple");
@@ -107,6 +111,8 @@ export default function Code() {
           >
             <Dropdown onClick={handleLanguageSelect} />
             <div className="flex justify-center gap-3 items-center">
+              <Button onClick={()=>{setisDragModalopen(true)}} title="File Upload"/>
+              <Modal open={isDragModalopen} onClose={() => setisDragModalopen(false)}/>
               <Themebutton
                 isDark={themeColor === "noctis-light"}
                 toggleTheme={() =>

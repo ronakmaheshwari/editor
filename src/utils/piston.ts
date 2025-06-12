@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Piston } from "./utils";
+import {Piston } from "./utils";
 import * as ts from "typescript";
 
 export async function getLatestVersion(language: string): Promise<string> {
@@ -31,8 +31,8 @@ export default async function runcode({
   output: { stdout?: string; stderr?: string; output?: string; message?: string };
 }> {
   try {
-    const version = await getLatestVersion(language);
-
+    let runtimeLang = language === "cpp" ? "c++" : language;
+    const version = await getLatestVersion(runtimeLang);
     let finalCode = code;
 
     if (language === "typescript") {
