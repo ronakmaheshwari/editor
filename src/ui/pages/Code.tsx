@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useCallback } from "react";
 import CodeEditor from "../components/CodeEditor";
 import Dropdown from "../components/Dropdown";
 import Code_Snippet from "../../utils/utils";
@@ -50,6 +50,10 @@ export default function Code() {
       setValue("");
     }, 2000);
   };
+
+  const handleFileContent = useCallback(async(text: string)=>{
+    setValue(text);
+  },[])
 
   const handleCode = async () => {
     const sourceCode = editorRef.current?.getValue() || "";
@@ -112,7 +116,12 @@ export default function Code() {
             <Dropdown onClick={handleLanguageSelect} />
             <div className="flex justify-center gap-3 items-center">
               <Button onClick={()=>{setisDragModalopen(true)}} title="File Upload"/>
-              <Modal open={isDragModalopen} onClose={() => setisDragModalopen(false)}/>
+              <Modal
+                open={isDragModalopen}
+                onClose={() => setisDragModalopen(false)}
+              >
+                <MyDropzone onFileContent={handleFileContent} />
+              </Modal>
               <Themebutton
                 isDark={themeColor === "noctis-light"}
                 toggleTheme={() =>

@@ -1,13 +1,12 @@
 import { useEffect, useRef } from "react";
-import MyDropzone from "./DragnDrop";
 import { CircleX } from "lucide-react";
 
 interface ModalProps {
-    open: boolean;
-    onClose: () => void;
+  open: boolean;
+  onClose: () => void;
+  children?: React.ReactNode; 
 }
-
-export default function Modal({ open, onClose }: ModalProps) {
+export default function Modal({ open, onClose, children }: ModalProps) {
     const modalRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -44,7 +43,7 @@ export default function Modal({ open, onClose }: ModalProps) {
                 >
                     <CircleX />
                 </button>
-                <MyDropzone />
+                {children}
             </div>
         </div>
     );
